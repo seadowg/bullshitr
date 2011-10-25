@@ -30,10 +30,6 @@ class Essay
   
   private
     def word_count(word)
-      unless @stats[:word_count]
-        @stats[:word_count] = 1
-      else
-        @stats[:word_count] = @stats[:word_count] + 1
-      end
+        @stats[:word_count] = (@stats[:word_count] || 0) + 1
     end
 end
