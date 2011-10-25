@@ -9,9 +9,18 @@
       <div class="container"><h1>bullshitr<small>Are you one?</small></h1></div>
     </div>
     <div class="container center">
-      <p><h1>Your essay is <%= @essay.text_classification %>.</h1></p>
-      <div class="stats">
-        <h2>Words: <%= @essay.stats[:word_count] || 0 %></h2>
+      <div class="stat hero-unit">
+        <h1>Your essay is <%= @essay.text_classification %>.</h1>
+      </div>
+      <div class="stats row">
+        <div class="stat hero-unit span6">
+          <h1><%= @essay.words || 0 %></h1>
+          <p>words</p>
+        </div>
+        <div class="stat hero-unit span6">
+          <h1><%= @essay.weasels %></h1>
+          <p>weasels</p>
+        </div>
       </div>
     </div>
   </body>

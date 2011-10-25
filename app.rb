@@ -10,39 +10,67 @@ class Bullshitr < Sinatra::Base
     @essay.analyse
     erb :essay
   end
-  
 end
+
+WEASELS = ["fairly","substantial","various","very","few","relatively","quite","huge","relatively"]
+
+class String
+  def weasel?
+    WEASELS.include? self
+  end
+end
+  
 
 class Essay
   attr_reader :stats
   attr_reader :mark
+  attr_reader :weasels
   
   def initialize(text)
     @text = text
-    @stats = {}
-    @mark = 1
+    @mark = 2
+    @words = 0
+    @weasels = 0
   end
   
   def analyse
-    @text.split(/[^a-zA-Z]/).each do | word |
-      word_count(word)
+    words = @text.split(/[^a-zA-Z]/)
+    
+    words.each do | word |
+      if word.weasel?
+        @weasels = @weasels + 1
+      end
     end
     
-    if @stats[:word_count] > 10000
-      @mark = @mark - 1
+    @words = words.length
+    
+    if @words > 0
+      score
     end
   end
   
+  def words
+    @words
+  end
+  
   def text_classification
-    if @mark > 0
+    if @mark > 1
       '<span class="fine">fine</span>'
+    elsif @mark == 1
+      '<span class="ok">not great</span>'
     else
       '<span class="bullshit">definitely bullshit</span>'
     end
   end
   
   private
-    def word_count(word)
-      @stats[:word_count] = (@stats[:word_count] || 0) + 1
+    def score
+      if @words > 10000
+        @mark = @mark - 1
+      end
+
+      if (@weasels / @words) > 0.1
+        @mark = @mark - 1
+      end
     end
 end
