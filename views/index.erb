@@ -8,12 +8,14 @@
       <div class="container"><h1>bullshitr<small>Are you one?</small></h1></div>
     </div>
     <div class="container">
-      <p>
-        <textarea class="xxlarge" id="textarea2" name="textarea2" rows="3" style="height: 360px; width: 940px; resize: none;"></textarea>
-      </p>
-      <p style="text-align: center; margin-top: 20px;">
-        <a href="#" class="btn danger" style="font-size: 20px;">Am I talking crap?</a>
-      </p>
+      <form id="form" action="/essay" method="post">
+        <p>
+          <input type="text" class="xxlarge" id="textarea2" name="textarea2" rows="3" style="height: 360px; width: 940px; resize: none;"></textarea>
+        </p>
+        <p style="text-align: center; margin-top: 20px;">
+          <input type="submit" id ="submit" class="btn danger" style="font-size: 20px;" value="Am I Talking Crap?"/>
+        </p>
+      </form>
     </div>
   </body>
 </html>

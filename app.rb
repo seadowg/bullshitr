@@ -6,5 +6,6 @@ class Bullshitr < Sinatra::Base
   end
   
   post "/essay" do
+    erb :essay
   end
 end
