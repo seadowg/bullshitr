@@ -12,6 +12,7 @@ class Bullshitr < Sinatra::Base
   end
 end
 
+HIGH_SCORE = 1
 WEASELS = ["fairly","substantial","various","very","few","relatively","quite","huge","relatively"]
 
 class String
@@ -28,7 +29,7 @@ class Essay
   
   def initialize(text)
     @text = text
-    @mark = 1
+    @mark = HIGH_SCORE
     @words = 0
     @weasels = 0
   end
@@ -54,10 +55,10 @@ class Essay
   end
   
   def text_classification
-    if @mark > 0
+    if @mark > (HIGH_SCORE / 2)
       '<span class="fine">fine</span>'
-    #elsif @mark == 1
-    #s  '<span class="ok">not great</span>'
+    elsif @mark > 0
+      '<span class="ok">not great</span>'
     else
       '<span class="bullshit">bullshit</span>'
     end
