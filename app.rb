@@ -59,7 +59,7 @@ class Essay
     #elsif @mark == 1
     #s  '<span class="ok">not great</span>'
     else
-      '<span class="bullshit">definitely bullshit</span>'
+      '<span class="bullshit">bullshit</span>'
     end
   end
   
