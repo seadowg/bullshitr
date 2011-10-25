@@ -28,7 +28,7 @@ class Essay
   
   def initialize(text)
     @text = text
-    @mark = 2
+    @mark = 1
     @words = 0
     @weasels = 0
   end
@@ -54,10 +54,10 @@ class Essay
   end
   
   def text_classification
-    if @mark > 1
+    if @mark > 0
       '<span class="fine">fine</span>'
-    elsif @mark == 1
-      '<span class="ok">not great</span>'
+    #elsif @mark == 1
+    #s  '<span class="ok">not great</span>'
     else
       '<span class="bullshit">definitely bullshit</span>'
     end
@@ -65,10 +65,6 @@ class Essay
   
   private
     def score
-      if @words > 10000
-        @mark = @mark - 1
-      end
-
       if (@weasels / @words) > 0.1
         @mark = @mark - 1
       end
