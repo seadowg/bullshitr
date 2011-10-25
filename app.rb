@@ -22,8 +22,7 @@ class Essay
   end
   
   def analyse
-    words = @text.split(/[^a-zA-Z]/)
-    words.each do | word |
+     @text.split(/[^a-zA-Z]/).each do | word |
       word_count(word)
     end
   end
