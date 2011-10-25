@@ -6,6 +6,34 @@ class Bullshitr < Sinatra::Base
   end
   
   post "/essay" do
+    @essay = Essay.new(params[:textarea])
+    @essay.analyse
     erb :essay
   end
+  
+end
+
+class Essay
+  attr_reader :stats
+  
+  def initialize(text)
+    @text = text
+    @stats = {}
+  end
+  
+  def analyse
+    words = @text.split(/[^a-zA-Z]/)
+    words.each do | word |
+      word_count(word)
+    end
+  end
+  
+  private
+    def word_count(word)
+      unless @stats[:word_count]
+        @stats[:word_count] = 1
+      else
+        @stats[:word_count] = @stats[:word_count] + 1
+      end
+    end
 end
