@@ -15,15 +15,29 @@ end
 
 class Essay
   attr_reader :stats
+  attr_reader :mark
   
   def initialize(text)
     @text = text
     @stats = {}
+    @mark = 1
   end
   
   def analyse
     @text.split(/[^a-zA-Z]/).each do | word |
       word_count(word)
+    end
+    
+    if @stats[:word_count] > 10000
+      @mark = @mark - 1
+    end
+  end
+  
+  def text_classification
+    if @mark > 0
+      '<span class="fine">fine</span>'
+    else
+      '<span class="bullshit">definitely bullshit</span>'
     end
   end
   
