@@ -1,0 +1,17 @@
+.essay_box {
+	height: 360px; 
+	width: 940px; 
+	resize: none;
+}
+
+.center {
+	text-align: center;
+}
+
+.crap_button {
+	font-size: 20px;
+}
+
+.bullshit {
+	color: red;
+}

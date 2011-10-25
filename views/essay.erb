@@ -2,13 +2,14 @@
   <head>
     <title>bullshitr</title>
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+    <link rel="stylesheet" href="master.css">
   </head>
   <body>
     <div class="hero-unit">
       <div class="container"><h1>bullshitr<small>Are you one?</small></h1></div>
     </div>
-    <div class="container" style="text-align: center;">
-      <p><h1>Your essay is <span style="color: red;">definitely bullshit</span>.</h1></p>
+    <div class="container center">
+      <p><h1>Your essay is <span class="bullshit">definitely bullshit</span>.</h1></p>
       <div class="stats">
         <h2>Words: <%= @essay.stats[:word_count] || 0 %></h2>
       </div>

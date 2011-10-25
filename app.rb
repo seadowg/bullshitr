@@ -6,7 +6,7 @@ class Bullshitr < Sinatra::Base
   end
   
   post "/essay" do
-    @essay = Essay.new(params[:textarea])
+    @essay = Essay.new(params[:text])
     @essay.analyse
     erb :essay
   end
