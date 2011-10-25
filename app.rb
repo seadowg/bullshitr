@@ -22,13 +22,13 @@ class Essay
   end
   
   def analyse
-     @text.split(/[^a-zA-Z]/).each do | word |
+    @text.split(/[^a-zA-Z]/).each do | word |
       word_count(word)
     end
   end
   
   private
     def word_count(word)
-        @stats[:word_count] = (@stats[:word_count] || 0) + 1
+      @stats[:word_count] = (@stats[:word_count] || 0) + 1
     end
 end
