@@ -23,7 +23,6 @@ end
   
 
 class Essay
-  attr_reader :stats
   attr_reader :mark
   attr_reader :weasels
   
