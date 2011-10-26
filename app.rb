@@ -14,7 +14,7 @@ end
 
 
 class String
-  WEASELS = ["fairly","substantial","various","very","few","relatively","quite","huge","relatively"]
+  WEASELS = ["fairly","substantial","various","very","few","relatively","quite","huge","relatively","interestingly"]
     
   def weasel?
     WEASELS.include? self
