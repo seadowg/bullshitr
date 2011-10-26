@@ -14,11 +14,11 @@
       </div>
       <div class="stats row">
         <div class="stat hero-unit span6">
-          <h1><%= @essay.words || 0 %></h1>
+          <h1><%= @essay.count[:words] %></h1>
           <p>words</p>
         </div>
         <div class="stat hero-unit span6">
-          <h1><%= @essay.weasels %></h1>
+          <h1><%= @essay.count[:weasels] %></h1>
           <p>weasels</p>
         </div>
       </div>

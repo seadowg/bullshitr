@@ -12,61 +12,57 @@ class Bullshitr < Sinatra::Base
   end
 end
 
-HIGH_SCORE = 1
-WEASELS = ["fairly","substantial","various","very","few","relatively","quite","huge","relatively"]
 
 class String
+  WEASELS = ["fairly","substantial","various","very","few","relatively","quite","huge","relatively"]
+    
   def weasel?
     WEASELS.include? self
   end
 end
   
-
 class Essay
+  HIGH_SCORE = 1
+  
+  attr_reader :stats
   attr_reader :mark
-  attr_reader :weasels
+  attr_reader :count
   
   def initialize(text)
     @text = text
+    
     @mark = HIGH_SCORE
-    @words = 0
-    @weasels = 0
+    
+    @count = Hash.new(0)
+    count[:words] = tokens.length
   end
   
-  def analyse
-    words = @text.split(/[^a-zA-Z]/)
-    
-    words.each do | word |
-      if word.weasel?
-        @weasels = @weasels + 1
-      end
-    end
-    
-    @words = words.length
-    
-    if @words > 0
-      score
-    end
+  def tokens
+    @tokens ||= @text.split(/[^a-zA-Z]/)
   end
   
-  def words
-    @words
+  def analyse    
+    tokens.each do |word|
+      count[:weasels] += 1 if word.weasel?
+    end
+        
+    score if count[:words] > 0
   end
   
   def text_classification
-    if @mark > (HIGH_SCORE / 2.0)
-      '<span class="fine">fine</span>'
-    elsif @mark > 0
-      '<span class="ok">not great</span>'
-    else
-      '<span class="bullshit">bullshit</span>'
+    case
+      when mark > (HIGH_SCORE / 2)
+        '<span class="fine">fine</span>'
+      when mark > 0
+        '<span class="ok">not great</span>'
+      else
+        '<span class="bullshit">bullshit</span>'
     end
   end
   
   private
     def score
-      if (@weasels / Float(@words)) > 0.1
-        @mark = @mark - 1
-      end
+      excessive_weasels = (count[:weasels] / Float(count[:words])) > 0.1
+      @mark -= 1 if excessive_weasels
     end
 end
