@@ -55,7 +55,7 @@ class Essay
   end
   
   def text_classification
-    if @mark > (HIGH_SCORE / 2)
+    if @mark > (HIGH_SCORE / 2.0)
       '<span class="fine">fine</span>'
     elsif @mark > 0
       '<span class="ok">not great</span>'
@@ -66,7 +66,7 @@ class Essay
   
   private
     def score
-      if (@weasels / @words) > 0.1
+      if (@weasels / Float(@words)) > 0.1
         @mark = @mark - 1
       end
     end
