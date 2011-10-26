@@ -62,7 +62,7 @@ class Essay
   
   private
     def score
-      excessive_weasels = (count[:weasels] / Float(count[:words])) > 0.1
+      excessive_weasels = (count[:weasels] / Float(count[:words])) > 0.05
       @mark -= 1 if excessive_weasels
     end
 end
