@@ -34,11 +34,11 @@ class Essay
     @mark = HIGH_SCORE
     
     @count = Hash.new(0)
-    count[:words] = tokens.length
+    count[:words] = tokens.length - 1
   end
   
   def tokens
-    @tokens ||= @text.split(/[^a-zA-Z]/)
+    @tokens ||= @text.split(/\w+/)
   end
   
   def analyse    
