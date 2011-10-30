@@ -38,7 +38,7 @@ class Essay
   end
   
   def tokens
-    @tokens ||= @text.split(/\w+/)
+    @tokens ||= @text.split(/[^a-zA-Z]/)
   end
   
   def analyse    
