@@ -34,7 +34,6 @@ class Essay
     @mark = HIGH_SCORE
     
     @count = Hash.new(0)
-    count[:words] = tokens.length - 1
   end
   
   def tokens
@@ -43,6 +42,7 @@ class Essay
   
   def analyse    
     tokens.each do |word|
+      count[:words] += 1
       count[:weasels] += 1 if word.weasel?
     end
         
